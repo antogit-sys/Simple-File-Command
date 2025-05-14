@@ -1,0 +1,53 @@
+.\" Manpage for sfile
+.TH SFILE 1 "May 2025" "1.0" "General Commands Manual"
+.SH NAME
+sfile \- Determine the type of FILEs using libmagic
+.SH SYNOPSIS
+.B sfile \fIfile\fR...
+.SH DESCRIPTION
+sfile stands for simple file, and it is a command-line program written in C that determines the type
+of one or more files using the libmagic library. It is designed as a minimal and simplified version of
+the Unix \fIfile\fR command.
+
+Unlike the \fIfile\fR command, which can have numerous options and complex behaviors, sfile focuses on the
+essentials: displaying the type of each file passed as an argument, based on its actual content. This
+makes it useful in educational contexts, for debugging, or when a lighter alternative is preferred.
+.SH EXAMPLES
+To determine the type of a file, run:
+.PP
+$ sfile data.txt
+.br
+data.txt: ASCII text
+
+Or, to check multiple files, run:
+.PP
+$ sfile data1.txt data2.bin path/main.c
+.br
+data1.txt:   ASCII text
+.br
+data2.bin:   POSIX tar archive (GNU)
+.br
+path/main.c: C source, ASCII text
+
+In case one or more files were not found:
+.PP
+$ sfile data1.txt data2.c example.py
+.br
+data1.txt:  ASCII text
+.br
+data2.c:    C source, ASCII text
+.br
+example.py: cannot open `example.py` (No such file or directory)
+.br
+
+.br
+Summary 1 file(s) could not be opened.
+
+.SH AUTHOR
+Written by Ucc3tto.
+.SH GITHUB
+.PP
+.B https://github.com/antogit-sys/
+
+.SH LICENSE
+Distributed under the GPLv3 license.
