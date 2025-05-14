@@ -5,6 +5,9 @@
 #include <magic.h>
 #include "../include/sfile.h"
 
+
+void print_banner(const char*);
+
 int main(int argc, char** argv)  
 {
     magic_t magic_cookie;  // Variable to store the magic cookie
@@ -13,12 +16,7 @@ int main(int argc, char** argv)
 
     /* Check if arguments were passed to the program */
     if(argc < 2){
-        puts("======================================");
-        puts("Determine type of FILEs using libmagic\n");
-        printf("\tUsage:\n\t\t%s <file_name>\n", argv[0]);
-        printf("\tExample:\n\t\t%s data.txt\n",argv[0]);
-        printf("\tManual:\n\t\tman %s\n",argv[0]);
-        puts("======================================");
+        print_banner(argv[0]);
         exit(EXIT_FAILURE);
     }
     
@@ -55,5 +53,22 @@ int main(int argc, char** argv)
     magic_close(magic_cookie);
 
     return EXIT_SUCCESS;
+}
+
+void print_banner(const char* program_name){
+    puts("         _____ __   ");
+    puts("   _____/ __(_) /__ ");
+    puts("  / ___/ /_/ / / _ \\");
+    puts(" (__  ) __/ / /  __/");
+    puts("/____/_/ /_/_/\\___/     By Ucc3tto!");
+    puts("                    ");
+    puts("version 1.0");
+    puts("======================================");
+    puts("Determine type of FILEs using libmagic\n");
+    printf("\tUsage:\n\t\t%s <file_name>\n", program_name);
+    printf("\tExample:\n\t\t%s data.txt\n",program_name);
+    printf("\tManual:\n\t\tman %s\n",program_name);
+    puts("======================================");
+
 }
 
